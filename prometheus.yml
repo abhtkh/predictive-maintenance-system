@@ -1,0 +1,14 @@
+# prometheus.yml
+global:
+  scrape_interval: 15s # Scrape targets every 15 seconds
+
+scrape_configs:
+  - job_name: 'pdm_api_server'
+    static_configs:
+      - targets: ['host.docker.internal:8000']
+        # 'host.docker.internal' is a special DNS name that allows the
+        # Prometheus container to reach services running on the host machine.
+
+  - job_name: 'pdm_worker'
+    static_configs:
+      - targets: ['host.docker.internal:8001']
